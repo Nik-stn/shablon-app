@@ -10,7 +10,7 @@ function App() {
       <div className="container mt-3">
         <h1>Форма Шаблонов</h1>
         <nav>
-          <Link to="/" className="btn btn-primary mr-2">Список шаблонов</Link>
+          <Link to="/" className="btn btn-primary me-2">Список шаблонов</Link>
           <Link to="/create" className="btn btn-secondary">Создать шаблон</Link>
         </nav>
         <Routes>

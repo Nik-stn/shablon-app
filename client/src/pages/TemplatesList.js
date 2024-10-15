@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; // Для перехода к созданию нового шаблона
 
 const TemplatesList = () => {
   const [templates, setTemplates] = useState([]);
@@ -38,7 +37,6 @@ const TemplatesList = () => {
           ))}
         </ul>
       )}
-      <Link to="/create" className="btn btn-secondary">Создать новый шаблон</Link>
     </div>
   );
 };
