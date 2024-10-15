@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Для навигации
 import axios from 'axios';
 
 const CreateTemplate = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Для навигации после создания
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ const CreateTemplate = () => {
       setTitle('');
       setDescription('');
       setError('');
+      navigate('/'); // Переход на страницу со списком
     } catch (err) {
       console.error('Ошибка создания шаблона', err);
       setError('Ошибка создания шаблона');
