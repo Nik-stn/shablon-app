@@ -2,21 +2,25 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const connectDB = require('./config/db'); // Импортируем функцию подключения к базе данных
+const Template = require('./models/Template'); // Импортируем модель шаблона
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-let templates = []; // Массив для хранения шаблонов
+// Подключение к MongoDB
+connectDB();
 
-app.post('/api/templates', (req, res) => {
+app.post('/api/templates', async (req, res) => {
   const { title, description } = req.body;
-  const newTemplate = { id: templates.length + 1, title, description };
-  templates.push(newTemplate);
+  const newTemplate = new Template({ title, description }); // Используем модель Template
+  await newTemplate.save(); // Сохраняем новый шаблон в базе данных
   res.status(201).json(newTemplate);
 });
 
-app.get('/api/templates', (req, res) => {
+app.get('/api/templates', async (req, res) => {
+  const templates = await Template.find(); // Получаем все шаблоны из базы данных
   res.json(templates);
 });
 

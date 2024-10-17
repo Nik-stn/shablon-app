@@ -30,12 +30,12 @@ const TemplatesList = () => {
         <p>{error}</p>
       ) : (
         <ul>
-          {templates.map((template) => (
-            <li key={template.id}>
-              <strong>{template.title}</strong> — {template.description}
-            </li>
-          ))}
-        </ul>
+        {templates.map((template, index) => (
+          <li key={index}>
+            <strong>{template.title}</strong> — {template.description}
+          </li>
+        ))}
+      </ul>
       )}
     </div>
   );
