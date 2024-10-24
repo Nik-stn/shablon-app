@@ -9,12 +9,16 @@ const TemplatesList = () => {
   useEffect(() => {
     const fetchTemplates = async () => {
       try {
-        const res = await axios.get('https://shablon-app.vercel.app/');
-        setTemplates(res.data);
-        setLoading(false);
+        const res = await axios.get('https://shablon-app.vercel.app/api/templates');
+        if (Array.isArray(res.data)) { // Проверяем, является ли ответ массивом
+          setTemplates(res.data);
+        } else {
+          throw new Error('Ответ не является массивом');
+        }
       } catch (err) {
         console.error('Ошибка загрузки шаблонов', err);
         setError('Ошибка загрузки шаблонов');
+      } finally {
         setLoading(false);
       }
     };
@@ -30,12 +34,12 @@ const TemplatesList = () => {
         <p>{error}</p>
       ) : (
         <ul>
-        {templates.map((template, index) => (
-          <li key={index}>
-            <strong>{template.title}</strong> — {template.description}
-          </li>
-        ))}
-      </ul>
+          {templates.map((template, index) => (
+            <li key={index}>
+              <strong>{template.title}</strong> — {template.description}
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );
