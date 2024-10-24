@@ -12,7 +12,7 @@ const CreateTemplate = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/api/templates', {
+      const response = await axios.post('https://shablon-app.vercel.app/', {
         title,
         description,
       });
