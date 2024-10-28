@@ -4,7 +4,6 @@
   "description": "��#\u0000 \u0000(\u00040\u00041\u0004;\u0004>\u0004=\u0004K\u0004 \u0000D\u0004>\u0004@\u0004<\u0004\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "dev": "node api/index.js", 
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
