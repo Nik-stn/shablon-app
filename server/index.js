@@ -1,15 +1,13 @@
-// api/index.js
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const connectDB = require('../config/db'); // Импортируем функцию подключения к базе данных
-const Template = require('../models/Template'); // Импортируем модель шаблона
+const connectDB = require('./config/db'); 
+const Template = require('./models/Template'); 
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Подключение к MongoDB
 connectDB();
 
 app.post('/api/templates', async (req, res) => {
@@ -24,4 +22,6 @@ app.get('/api/templates', async (req, res) => {
   res.json(templates);
 });
 
-module.exports = app; // Экспортируем приложение
+module.exports = (req, res) => {
+  app(req, res);
+};
