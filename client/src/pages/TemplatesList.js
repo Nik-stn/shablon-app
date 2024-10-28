@@ -9,7 +9,7 @@ const TemplatesList = () => {
   useEffect(() => {
     const fetchTemplates = async () => {
       try {
-        const res = await axios.get('https://vercel.com/stns-projects/shablon-app');
+        const res = await axios.get('http://localhost:5000/api/templates');
         setTemplates(res.data);
         setLoading(false);
       } catch (err) {
